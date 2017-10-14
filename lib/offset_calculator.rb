@@ -31,6 +31,28 @@ attr_reader :current_date,
     date_squared.to_s.chars.last(4)
   end
 
+  def offset_to_integer
+    grab_offset_from_date_squared.map {|number_element| number_element.to_i}
+  end
+
+
+  def key_formatter
+    formatted_key = []
+    formatted_key << current_key[0] + current_key[1]
+    formatted_key << current_key[1] + current_key[2]
+    formatted_key << current_key[2] + current_key[3]
+    formatted_key << current_key[3] + current_key[4]
+    formatted_key
+  end
+
+  def key_to_integer
+    key_formatter.map {|number| number.to_i}
+  end
+
+  def rotation_creator
+    key_to_integer + offset_to_integer
+  end
+
 end
 
 off = OffsetCalculator.new
