@@ -1,9 +1,12 @@
 require "minitest/autorun"
 require "minitest/pride"
 require "./lib/offset_calculator"
+require "yymmdd"
 require "pry"
 
 class OffsetCalculatorTest < Minitest::Test
+
+  include YYMMDD
 
   def test_offset_calculator_exists
     current_offset = OffsetCalculator.new
@@ -23,9 +26,32 @@ class OffsetCalculatorTest < Minitest::Test
     assert_instance_of String, current_offset.current_key
   end
 
-  def test_case_name
+  def test_format_date_to_string
+    current_offset = OffsetCalculator.new
 
+    assert_equal ddmmyy(Date.today), current_offset.date_to_string
   end
-    # query the A, B, C, and D final rotations
+
+  def test_format_date_to_integer
+    current_offset = OffsetCalculator.new
+
+    assert_equal ddmmyy(Date.today).to_i, current_offset.format_date_to_integer
+  end
+
+  def test_date_squared
+    current_offset = OffsetCalculator.new
+    actual = (current_offset.format_date_to_integer) ** 2
+    expected = current_offset.date_squared
+
+    assert_equal expected, actual
+  end
+
+  def test_grab_offset_from_date_squared
+    current_offset = OffsetCalculator.new
+    actual = ((ddmmyy(Date.today).to_i) ** 2).to_s.chars.last(4)
+    expected = current_offset.grab_offset_from_date_squared
+
+    assert_equal expected, actual
+  end
 
 end

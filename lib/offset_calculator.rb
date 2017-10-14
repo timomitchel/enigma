@@ -16,11 +16,11 @@ attr_reader :current_date,
   end
 
   def format_date_to_integer
-    date_to_string.delete('/').to_i
+    date_to_string.to_i
   end
 
   def date_to_string
-   dd/mm/yy(@current_date)
+   ddmmyy(@current_date)
   end
 
   def date_squared
@@ -32,3 +32,6 @@ attr_reader :current_date,
   end
 
 end
+
+off = OffsetCalculator.new
+p off.format_date_to_integer
