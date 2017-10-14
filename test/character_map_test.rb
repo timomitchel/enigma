@@ -40,7 +40,6 @@ class CharacterMapTest < Minitest::Test
 
   def test_space_character_returned_from_array_at_correct_index
     assert_equal ' ', character_map.map[36]
-    
   end
 
 end
