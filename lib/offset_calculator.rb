@@ -31,6 +31,15 @@ attr_reader :current_date,
     date_squared.to_s.chars.last(4)
   end
 
+  def key_formatter
+    formatted_key = []
+    formatted_key << current_key[0] + current_key[1]
+    formatted_key << current_key[1] + current_key[2]
+    formatted_key << current_key[2] + current_key[3]
+    formatted_key << current_key[3] + current_key[4]
+    formatted_key
+  end
+
 end
 
 off = OffsetCalculator.new

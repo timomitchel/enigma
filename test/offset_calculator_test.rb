@@ -54,4 +54,10 @@ class OffsetCalculatorTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_key_formatter_returns_array
+    current_offset = OffsetCalculator.new
+
+    assert_instance_of Array, current_offset.key_formatter
+  end
+
 end
