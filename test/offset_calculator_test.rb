@@ -23,4 +23,9 @@ class OffsetCalculatorTest < Minitest::Test
     assert_instance_of String, current_offset.current_key
   end
 
+  def test_case_name
+
+  end
+    # query the A, B, C, and D final rotations
+
 end
