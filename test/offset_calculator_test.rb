@@ -60,4 +60,29 @@ class OffsetCalculatorTest < Minitest::Test
     assert_instance_of Array, current_offset.key_formatter
   end
 
+  def test_key_to_integer
+    current_offset = OffsetCalculator.new
+
+    assert_instance_of Integer, current_offset.key_to_integer[0]
+    assert_instance_of Integer, current_offset.key_to_integer[1]
+    assert_instance_of Integer, current_offset.key_to_integer[2]
+    assert_instance_of Integer, current_offset.key_to_integer[3]
+    assert_instance_of Array, current_offset.key_to_integer
+  end
+
+  def test_rotation_creator
+    current_offset = OffsetCalculator.new
+
+    assert_instance_of Array, current_offset.rotation_creator
+  end
+
+  def test_rotation_is_summed_correctly
+    current_offset = OffsetCalculator.new
+    key = current_offset.key_to_integer
+    offset = current_offset.offset_to_integer
+
+    assert_equal key + offset, current_offset.rotation_creator
+
+  end
+
 end
