@@ -82,7 +82,6 @@ class OffsetCalculatorTest < Minitest::Test
     offset = current_offset.offset_to_integer
 
     assert_equal key + offset, current_offset.rotation_creator
-
   end
 
 end

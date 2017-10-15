@@ -14,7 +14,7 @@ class KeyGeneratorTest < Minitest::Test
   def test_random_key_generated_has_5_digits
     current_key = KeyGenerator.new
 
-    assert_equal 5,current_key.key.length
+    assert_equal 5, current_key.key.length
   end
 
   def test_random_key_generated_includes_digits_0_to_9
