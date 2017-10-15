@@ -3,6 +3,8 @@ require_relative 'character_map'
 
 class Encryptor
 
+  attr_reader :message
+  
   def initialize(message)
     @message = message.to_s
   end
@@ -50,7 +52,7 @@ class Encryptor
   def character_collector(index, chars_to_rotate)
     until index > message_splitter.length
       chars_to_rotate << message_splitter[index]
-      index += 3
+      index += 4
     end
   end
 
@@ -63,5 +65,6 @@ end
 
 e = Encryptor.new('Hello there I am a fabulous new message you shit')
 p e.a_index_finder
-p e.character_map[0..36]
+p e.character_map[0..38]
+p e.rotation["A"]
 p e.character_map_indexes(e.a_index_finder)
