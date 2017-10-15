@@ -62,3 +62,6 @@ class OffsetCalculator
     rotator
   end
 end
+
+off = OffsetCalculator.new
+p off.a_to_d_assignment

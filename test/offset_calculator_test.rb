@@ -84,4 +84,15 @@ class OffsetCalculatorTest < Minitest::Test
     assert_equal key + offset, current_offset.rotation_creator
   end
 
+  def test_a_to_d_assignment
+    current_offset = OffsetCalculator.new
+
+    assert_instance_of Hash, current_offset.a_to_d_assignment
+    assert_instance_of Integer, current_offset.a_to_d_assignment['A']
+    assert_instance_of Integer, current_offset.a_to_d_assignment['B']
+    assert_instance_of Integer, current_offset.a_to_d_assignment['C']
+    assert_instance_of Integer, current_offset.a_to_d_assignment['D']
+    assert_equal ["A", "B", "C", "D"], current_offset.a_to_d_assignment.keys
+  end
+
 end
