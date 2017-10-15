@@ -3,14 +3,11 @@ require_relative 'character_map'
 
 class Encryptor
 
-  attr_reader :message
+  attr_reader :message, :offset
 
   def initialize(message)
     @message = message.to_s
-  end
-
-  def rotation
-    OffsetCalculator.new.a_to_d_assignment
+    @offset = OffsetCalculator.new.a_to_d_assignment
   end
 
   def character_map
@@ -45,24 +42,64 @@ class Encryptor
     character_collector(index, chars_to_rotate)
   end
 
-
+  def character_collector(index, chars_to_rotate)
+      while index < message_splitter.length
+        chars_to_rotate << message_splitter[index]
+        index += 4
+      end
+      chars_to_rotate
+  end
 
   def character_map_indexes(characters_to_map)
-        characters_to_map.map do |char|
-         character_map.index(char)
+      characters_to_map.map do |char|
+        character_map.index(char)
     end
   end
 
-  def index_rotator
+  def offset_a
+    offset["A"]
+  end
+
+  def offset_a
+    offset["B"]
+  end
+
+  def offset_a
+    offset["C"]
+  end
+
+  def offset_a
+    offset["D"]
+  end
+
+  def index_rotator_a
     character_map_indexes(a_index_finder).map do |index|
-      index + rotation['A']
+      index + offset_a
     end
   end
+
+  def index_rotator_b
+    character_map_indexes(b_index_finder).map do |index|
+      index + offset_b
+    end
+  end
+
+  def index_rotator_c
+    character_map_indexes(c_index_finder).map do |index|
+      index + offset_c
+    end
+  end
+
+  def index_rotator_d
+    character_map_indexes(d_index_finder).map do |index|
+      index + offset_d
+    end
+  end
+
 end
 
 e = Encryptor.new('Hello there I am a fabulous new message you shit')
 p e.a_index_finder
 p e.character_map[0..38]
-p e.rotation["A"]
 p e.character_map_indexes(e.a_index_finder)
-p e.index_rotator
+p e.index_rotator_a
