@@ -1,4 +1,4 @@
-require "pry"
+
 
 class CharacterMap
 
@@ -14,6 +14,7 @@ class CharacterMap
   character_map << "."
   character_map << ","
   character_map * 4
+
   end
 
 end
