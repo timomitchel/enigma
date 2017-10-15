@@ -27,14 +27,6 @@ class Encryptor
     character_collector(index, chars_to_rotate)
   end
 
-  def character_collector(index, chars_to_rotate)
-    while index < message_splitter.length
-      chars_to_rotate << message_splitter[index]
-      index += 4
-    end
-    chars_to_rotate
-  end
-
   def b_index_finder
     index = 1
     chars_to_rotate = []
@@ -60,6 +52,12 @@ class Encryptor
          character_map.index(char)
     end
   end
+
+  def index_rotator
+    character_map_indexes(a_index_finder).map do |index|
+      index + rotation['A']
+    end
+  end
 end
 
 e = Encryptor.new('Hello there I am a fabulous new message you shit')
@@ -67,3 +65,4 @@ p e.a_index_finder
 p e.character_map[0..38]
 p e.rotation["A"]
 p e.character_map_indexes(e.a_index_finder)
+p e.index_rotator

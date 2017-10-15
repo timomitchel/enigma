@@ -2,6 +2,7 @@ require "date"
 require "./lib/key_generator"
 require "pry"
 require "yymmdd"
+
 class OffsetCalculator
 
   include YYMMDD
