@@ -4,7 +4,7 @@ require_relative 'character_map'
 class Encryptor
 
   attr_reader :message
-  
+
   def initialize(message)
     @message = message.to_s
   end
@@ -28,6 +28,13 @@ class Encryptor
     chars_to_rotate.compact
   end
 
+  def character_collector(index, chars_to_rotate)
+    until index > message_splitter.length
+      chars_to_rotate << message_splitter[index]
+      index += 4
+    end
+  end
+
   def b_index_finder
     index = 1
     chars_to_rotate = []
@@ -49,12 +56,7 @@ class Encryptor
     chars_to_rotate.compact
   end
 
-  def character_collector(index, chars_to_rotate)
-    until index > message_splitter.length
-      chars_to_rotate << message_splitter[index]
-      index += 4
-    end
-  end
+
 
   def character_map_indexes(characters_to_map)
         characters_to_map.map do |char|

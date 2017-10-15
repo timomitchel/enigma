@@ -50,5 +50,17 @@ class EncryptorTest < Minitest::Test
     assert_equal message[-7], encryptor.message_splitter[-7]
   end
 
+  def test_a_index_finder_returns_array
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Array, encryptor.a_index_finder
+  end
+
+  def test_a_index_finder_returns_correct_length_and_correct_character
+    encryptor = Encryptor.new("some")
+
+    assert_equal "s", encryptor.a_index_finder[0]
+    assert_equal 1, encryptor.a_index_finder.length
+  end
 
 end
