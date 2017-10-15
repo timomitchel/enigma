@@ -6,8 +6,8 @@ class OffsetCalculator
 
   include YYMMDD
 
-attr_reader :current_date,
-            :current_key
+  attr_reader :current_date,
+              :current_key
 
 
   def initialize(current_date = Date.today, current_key = KeyGenerator.new.key)
@@ -53,7 +53,12 @@ attr_reader :current_date,
     key_to_integer + offset_to_integer
   end
 
+  def a_to_d_assignment
+    rotator = {}
+    rotator['A'] = rotation_creator[0]
+    rotator['B'] = rotation_creator[1]
+    rotator['C'] = rotation_creator[2]
+    rotator['D'] = rotation_creator[3]
+    rotator
+  end
 end
-
-off = OffsetCalculator.new
-p off.format_date_to_integer
