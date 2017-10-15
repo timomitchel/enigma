@@ -25,35 +25,32 @@ class Encryptor
     index = 0
     chars_to_rotate = []
     character_collector(index, chars_to_rotate)
-    chars_to_rotate.compact
   end
 
   def character_collector(index, chars_to_rotate)
-    until index > message_splitter.length
+    while index < message_splitter.length
       chars_to_rotate << message_splitter[index]
       index += 4
     end
+    chars_to_rotate
   end
 
   def b_index_finder
     index = 1
     chars_to_rotate = []
     character_collector(index, chars_to_rotate)
-    chars_to_rotate.compact
   end
 
   def c_index_finder
     index = 2
     chars_to_rotate = []
     character_collector(index, chars_to_rotate)
-    chars_to_rotate.compact
   end
 
   def d_index_finder
     index = 3
     chars_to_rotate = []
     character_collector(index, chars_to_rotate)
-    chars_to_rotate.compact
   end
 
 

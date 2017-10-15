@@ -72,8 +72,6 @@ class EncryptorTest < Minitest::Test
     assert_equal expected, encryptor.a_index_finder
   end
 
-  #
-
   def test_b_index_finder_returns_array
     encryptor = Encryptor.new("some string")
 
@@ -96,8 +94,6 @@ class EncryptorTest < Minitest::Test
     assert_equal expected, encryptor.b_index_finder
   end
 
-  #
-
   def test_c_index_finder_returns_array
     encryptor = Encryptor.new("some string")
 
@@ -119,28 +115,34 @@ class EncryptorTest < Minitest::Test
     assert_equal "g", encryptor.c_index_finder[2]
     assert_equal expected, encryptor.c_index_finder
   end
-#
 
-def test_d_index_finder_returns_array
-  encryptor = Encryptor.new("some string")
 
-  assert_instance_of Array, encryptor.d_index_finder
-end
+  def test_d_index_finder_returns_array
+    encryptor = Encryptor.new("some string")
 
-def test_d_index_finder_returns_correct_length_and_correct_character
-  encryptor = Encryptor.new("some")
+    assert_instance_of Array, encryptor.d_index_finder
+  end
 
-  assert_equal "e", encryptor.d_index_finder[0]
-  assert_equal 1, encryptor.d_index_finder.length
-end
+  def test_d_index_finder_returns_correct_length_and_correct_character
+    encryptor = Encryptor.new("some")
 
-def test_d_index_finder_returns_correctly_for_longer_string
-  encryptor = Encryptor.new("some string with 12/15/17")
-  expected = ["e", "r", " ", "h", "/", "1"]
+    assert_equal "e", encryptor.d_index_finder[0]
+    assert_equal 1, encryptor.d_index_finder.length
+  end
 
-  assert_equal 6, encryptor.d_index_finder.length
-  assert_equal " ", encryptor.d_index_finder[2]
-  assert_equal expected, encryptor.d_index_finder
-end
+  def test_d_index_finder_returns_correctly_for_longer_string
+    encryptor = Encryptor.new("some string with 12/15/17")
+    expected = ["e", "r", " ", "h", "/", "1"]
+
+    assert_equal 6, encryptor.d_index_finder.length
+    assert_equal " ", encryptor.d_index_finder[2]
+    assert_equal expected, encryptor.d_index_finder
+  end
+
+  def test_character_collector_returns_array
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Array, encryptor.character_collector(0,[])
+  end
 
 end
