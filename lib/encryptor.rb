@@ -60,15 +60,15 @@ class Encryptor
     offset["A"]
   end
 
-  def offset_a
+  def offset_b
     offset["B"]
   end
 
-  def offset_a
+  def offset_c
     offset["C"]
   end
 
-  def offset_a
+  def offset_d
     offset["D"]
   end
 
