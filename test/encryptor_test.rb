@@ -63,4 +63,14 @@ class EncryptorTest < Minitest::Test
     assert_equal 1, encryptor.a_index_finder.length
   end
 
+  def test_a_index_finder_returns_correctly_for_longer_string
+    encryptor = Encryptor.new("some string with 12/15/17")
+    expected = ["s", " ", "i", "w", " ", "1", "7"]
+
+    assert_equal 7, encryptor.a_index_finder.length
+    assert_equal " ", encryptor.a_index_finder[1]
+    assert_equal expected, encryptor.a_index_finder
+  end
+
+
 end
