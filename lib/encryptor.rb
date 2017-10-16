@@ -98,7 +98,8 @@ class Encryptor
       rotated = character_map.rotate(offset_d)
       rotated[index]
     end
-  end 
+  end
+  
 
 end
 

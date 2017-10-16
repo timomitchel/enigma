@@ -222,5 +222,36 @@ class EncryptorTest < Minitest::Test
     assert_instance_of Integer, encryptor.offset_d
   end
 
+  def test_a_rotator_returns_an_array
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Array, encryptor.a_rotator
+  end
+
+  def test_b_rotator_returns_an_array
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Array, encryptor.b_rotator
+  end
+
+  def test_c_rotator_returns_an_array
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Array, encryptor.c_rotator
+  end
+
+  def test_d_rotator_returns_an_array
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Array, encryptor.d_rotator
+  end
+
+  def test_a_rotator_returns_from_unexpected_input
+    encryptor = Encryptor.new(982399877665443)
+
+    assert  encryptor.a_rotator[0], encryptor.a_rotator[1]
+  end
+
+
 
 end
