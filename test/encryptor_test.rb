@@ -144,13 +144,4 @@ class EncryptorTest < Minitest::Test
 
     assert_instance_of Array, encryptor.character_collector(0,[])
   end
-
-  def test_index_rotator_and_character_map_indexes_same_length
-    encryptor = Encryptor.new("some string")
-    expected = encryptor.character_map_indexes(encryptor.a_index_finder).length
-    actual = encryptor.index_rotator_a.length
-
-    assert_equal expected, actual
-  end
-
 end

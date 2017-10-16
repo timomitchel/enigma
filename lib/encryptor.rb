@@ -72,27 +72,31 @@ class Encryptor
     offset["D"]
   end
 
-  def index_rotator_a
+  def a_rotator
     character_map_indexes(a_index_finder).map do |index|
-      index + offset_a
+      rotated = character_map.rotate(offset_a)
+      rotated[index]
     end
   end
 
-  def index_rotator_b
+  def b_rotator
     character_map_indexes(b_index_finder).map do |index|
-      index + offset_b
+      rotated = character_map.rotate(offset_b)
+      rotated[index]
     end
   end
 
-  def index_rotator_c
+  def c_rotator
     character_map_indexes(c_index_finder).map do |index|
-      index + offset_c
+      rotated = character_map.rotate(offset_c)
+      rotated[index]
     end
   end
 
-  def index_rotator_d
+  def d_rotator
     character_map_indexes(d_index_finder).map do |index|
-      index + offset_d
+      rotated = character_map.rotate(offset_d)
+      rotated[index]
     end
   end
 
@@ -102,4 +106,4 @@ e = Encryptor.new('Hello there I am a fabulous new message you shit')
 p e.a_index_finder
 p e.character_map[0..38]
 p e.character_map_indexes(e.a_index_finder)
-p e.index_rotator_a
+p e.a_rotator
