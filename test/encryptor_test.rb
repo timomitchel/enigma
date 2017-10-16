@@ -144,4 +144,22 @@ class EncryptorTest < Minitest::Test
 
     assert_instance_of Array, encryptor.character_collector(0,[])
   end
+
+  def test_character_map_indexes_returns_array
+    encryptor = Encryptor.new("some string")
+    actual = encryptor.character_map_indexes(encryptor.a_index_finder)
+    assert_instance_of Array, actual
+  end
+
+  def test_character_map_indexes_returns_integers_at_index_position_on_char_map
+    encryptor = Encryptor.new("some string")
+    actual = encryptor.character_map_indexes(encryptor.a_index_finder)
+    expected_1 = encryptor.character_map.index('s')
+    expected_2 = encryptor.character_map.index(' ')
+    expected_3 = encryptor.character_map.index('i')
+
+    assert_equal expected_1, actual[0]
+    assert_equal expected_2, actual[1]
+    assert_equal expected_3, actual[2]
+  end
 end
