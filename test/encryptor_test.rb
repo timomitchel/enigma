@@ -151,7 +151,7 @@ class EncryptorTest < Minitest::Test
     assert_instance_of Array, actual
   end
 
-  def test_character_map_indexes_returns_integers_at_index_position_on_char_map
+  def test_character_map_index_a_returns_integers_at_index_position_on_char_map
     encryptor = Encryptor.new("some string")
     actual = encryptor.character_map_indexes(encryptor.a_index_finder)
     expected_1 = encryptor.character_map.index('s')
@@ -162,4 +162,65 @@ class EncryptorTest < Minitest::Test
     assert_equal expected_2, actual[1]
     assert_equal expected_3, actual[2]
   end
+
+  def test_character_map_index_b_returns_integers_at_index_position_on_char_map
+    encryptor = Encryptor.new("some string")
+    actual = encryptor.character_map_indexes(encryptor.b_index_finder)
+    expected_1 = encryptor.character_map.index('o')
+    expected_2 = encryptor.character_map.index('s')
+    expected_3 = encryptor.character_map.index('n')
+
+    assert_equal expected_1, actual[0]
+    assert_equal expected_2, actual[1]
+    assert_equal expected_3, actual[2]
+  end
+
+  def test_character_map_index_c_returns_integers_at_index_position_on_char_map
+    encryptor = Encryptor.new("some string")
+    actual = encryptor.character_map_indexes(encryptor.c_index_finder)
+    expected_1 = encryptor.character_map.index('m')
+    expected_2 = encryptor.character_map.index('t')
+    expected_3 = encryptor.character_map.index('g')
+
+    assert_equal expected_1, actual[0]
+    assert_equal expected_2, actual[1]
+    assert_equal expected_3, actual[2]
+  end
+
+  def test_character_map_index_d_returns_integers_at_index_position_on_char_map
+    encryptor = Encryptor.new("some string")
+    actual = encryptor.character_map_indexes(encryptor.d_index_finder)
+    expected_1 = encryptor.character_map.index('e')
+    expected_2 = encryptor.character_map.index('r')
+
+    assert_equal expected_1, actual[0]
+    assert_equal expected_2, actual[1]
+    assert_nil nil, actual[2]
+  end
+
+  def test_offset_a_returns_an_integer
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Integer, encryptor.offset_a
+  end
+
+  def test_offset_b_returns_an_integer
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Integer, encryptor.offset_b
+  end
+
+  def test_offset_c_returns_an_integer
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Integer, encryptor.offset_c
+  end
+
+  def test_offset_d_returns_an_integer
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Integer, encryptor.offset_d
+  end
+
+
 end
