@@ -1,7 +1,10 @@
 require_relative "encryptor"
 require "pry"
+require 'yymmdd'
 
-class Encrypted
+class Encrypt
+
+  include YYMMDD
 
   def initialize
     message = File.read(ARGV[0])
@@ -9,9 +12,9 @@ class Encrypted
     encryptor_class = Encryptor.new(message)
     encrypted_message = encryptor_class.format_encrypted_message
     encrypted_writer.write(encrypted_message)
-    puts "Created #{ARGV[1]} with the key #{encryptor_class.offset.current_key} and date #{encryptor_class.offset.current_date}"
+    date_formatter = ddmmyy(encryptor_class.offset.current_date)
+    puts "Created #{ARGV[1]} with the key #{encryptor_class.offset.current_key} and date #{date_formatter}"  
   end
-
 end
 
-Encrypted.new
+Encrypt.new
