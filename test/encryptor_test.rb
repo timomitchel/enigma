@@ -19,13 +19,13 @@ class EncryptorTest < Minitest::Test
   def test_rotation_returns_a_hash
     encryptor = Encryptor.new("holy shit")
 
-    assert_instance_of Hash, encryptor.offset
+    assert_instance_of OffsetCalculator, encryptor.offset
   end
 
   def test_rotation_has_A_B_C_D_keys
     encryptor = Encryptor.new(75)
 
-    assert_equal ["A","B","C","D"], encryptor.offset.keys
+    assert_equal ["A","B","C","D"], encryptor.offset.a_to_d_assignment.keys
   end
 
   def test_character_map_is_array

@@ -64,4 +64,6 @@ class OffsetCalculator
     rotator['D'] = rotation_creator[3]
     rotator
   end
+
+
 end

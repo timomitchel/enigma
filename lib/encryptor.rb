@@ -1,13 +1,14 @@
 require_relative 'offset_calculator'
 require_relative 'character_map'
+require "pry"
 
 class Encryptor
 
   attr_reader :message, :offset
 
   def initialize(message)
-    @message = message.to_s
-    @offset = OffsetCalculator.new.a_to_d_assignment
+    @message = message.to_s.chomp
+    @offset = OffsetCalculator.new
   end
 
   def character_map
@@ -57,19 +58,19 @@ class Encryptor
   end
 
   def offset_a
-    offset["A"]
+    offset.a_to_d_assignment["A"]
   end
 
   def offset_b
-    offset["B"]
+    offset.a_to_d_assignment["B"]
   end
 
   def offset_c
-    offset["C"]
+    offset.a_to_d_assignment["C"]
   end
 
   def offset_d
-    offset["D"]
+    offset.a_to_d_assignment["D"]
   end
 
   def a_rotator
@@ -107,15 +108,5 @@ class Encryptor
   def format_encrypted_message
     zip_rotated_characters.compact.join
   end
-end
 
-e = Encryptor.new('Hello there I am a fabulous')
-p e.a_index_finder
-p e.character_map
-p e.character_map_indexes(e.a_index_finder)
-p e.a_rotator
-p e.b_rotator
-p e.c_rotator
-p e.d_rotator
-p e.zip_rotated_characters
-p e.format_encrypted_message
+end
