@@ -140,7 +140,7 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_character_collector_returns_array
-    encryptor = Encryptor.new("some string")
+    encryptor = Encryptor.new("alsbguibadgiuab vobW08W3E8")
 
     assert_instance_of Array, encryptor.character_collector(0,[])
   end
@@ -211,13 +211,13 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_offset_c_returns_an_integer
-    encryptor = Encryptor.new("some string")
+    encryptor = Encryptor.new(230508385608242)
 
     assert_instance_of Integer, encryptor.offset_c
   end
 
   def test_offset_d_returns_an_integer
-    encryptor = Encryptor.new("some string")
+    encryptor = Encryptor.new({'some string' => 2})
 
     assert_instance_of Integer, encryptor.offset_d
   end
@@ -246,12 +246,35 @@ class EncryptorTest < Minitest::Test
     assert_instance_of Array, encryptor.d_rotator
   end
 
-  def test_a_rotator_returns_from_unexpected_input
+  def test_a_rotator_returns_same_rotation_for_a_with_unexpected_input
     encryptor = Encryptor.new(982399877665443)
 
     assert  encryptor.a_rotator[0], encryptor.a_rotator[1]
   end
 
+  def test_zip_rotated_characters_returns_array_of_nested_arrays
+    encryptor = Encryptor.new(982399877665443)
+    expected = encryptor.zip_rotated_characters[1][0]
+    actual = encryptor.zip_rotated_characters[0][0]
 
+    assert_instance_of Array, encryptor.zip_rotated_characters
+    assert_equal 4, encryptor.zip_rotated_characters.length
+    assert_equal expected, actual
+  end
+
+  def test_format_encrypted_message_returns_encrypted_string_with_correct_index
+    encryptor = Encryptor.new(982398237665443)
+    expected_1 = encryptor.format_encrypted_message[0]
+    actual_1 = encryptor.format_encrypted_message[4]
+    expected_2 = encryptor.format_encrypted_message[1]
+    actual_2  = encryptor.format_encrypted_message[5]
+    length_1 = encryptor.message.length
+    length_2 = encryptor.format_encrypted_message.length
+
+    assert_instance_of String, encryptor.format_encrypted_message
+    assert_equal expected_1, actual_1
+    assert_equal expected_2, actual_2
+    assert_equal length_1, length_2
+  end
 
 end

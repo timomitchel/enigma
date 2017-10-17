@@ -99,12 +99,23 @@ class Encryptor
       rotated[index]
     end
   end
-  
 
+  def zip_rotated_characters
+    a_rotator.zip(b_rotator, c_rotator, d_rotator)
+  end
+
+  def format_encrypted_message
+    zip_rotated_characters.compact.join
+  end
 end
 
-e = Encryptor.new('Hello there I am a fabulous new message you shit')
+e = Encryptor.new('Hello there I am a fabulous')
 p e.a_index_finder
 p e.character_map[0..38]
 p e.character_map_indexes(e.a_index_finder)
 p e.a_rotator
+p e.b_rotator
+p e.c_rotator
+p e.d_rotator
+p e.zip_rotated_characters
+p e.format_encrypted_message
