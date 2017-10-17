@@ -78,10 +78,8 @@ class OffsetCalculatorTest < Minitest::Test
 
   def test_rotation_is_summed_correctly
     current_offset = OffsetCalculator.new
-    key = current_offset.key_to_integer
-    offset = current_offset.offset_to_integer
 
-    assert_equal key + offset, current_offset.rotation_creator
+    assert_equal 4 , current_offset.rotation_creator.length
   end
 
   def test_a_to_d_assignment

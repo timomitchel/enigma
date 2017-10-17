@@ -51,7 +51,9 @@ class OffsetCalculator
   end
 
   def rotation_creator
-    key_to_integer + offset_to_integer
+    [key_to_integer, offset_to_integer].transpose.map do |both|
+      both.sum
+    end
   end
 
   def a_to_d_assignment
