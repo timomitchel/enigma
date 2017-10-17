@@ -111,7 +111,7 @@ end
 
 e = Encryptor.new('Hello there I am a fabulous')
 p e.a_index_finder
-p e.character_map[0..38]
+p e.character_map
 p e.character_map_indexes(e.a_index_finder)
 p e.a_rotator
 p e.b_rotator
