@@ -1,5 +1,5 @@
 require "date"
-require "./lib/key_generator"
+require_relative "key_generator"
 require "pry"
 require "yymmdd"
 
