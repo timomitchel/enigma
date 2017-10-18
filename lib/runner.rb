@@ -7,9 +7,4 @@ encrypted_message = File.open(ARGV[1], 'w')
 
 encrypted_message.close
 
-
-
-
-
-
 end

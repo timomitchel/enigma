@@ -1,7 +1,7 @@
 require "minitest/autorun"
 require "minitest/pride"
 require "./lib/key_generator"
-require "pry"
+require_relative "test_helper"
 
 class KeyGeneratorTest < Minitest::Test
 

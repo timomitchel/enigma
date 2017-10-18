@@ -1,7 +1,7 @@
 require "minitest/autorun"
 require "minitest/pride"
 require "./lib/character_map"
-require "pry"
+require_relative "test_helper"
 
 class CharacterMapTest < Minitest::Test
 

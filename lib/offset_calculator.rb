@@ -1,6 +1,5 @@
 require "date"
 require_relative "key_generator"
-require "pry"
 require "yymmdd"
 
 class OffsetCalculator
