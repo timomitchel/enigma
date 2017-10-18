@@ -31,26 +31,22 @@ class Decryptor
     message.downcase.chars
   end
 
-  def a_index_finder
-    index = 0
+  def a_index_finder(index)
     chars_to_rotate = []
     character_collector(index, chars_to_rotate)
   end
 
-  def b_index_finder
-    index = 1
+  def b_index_finder(index)
     chars_to_rotate = []
     character_collector(index, chars_to_rotate)
   end
 
-  def c_index_finder
-    index = 2
+  def c_index_finder(index)
     chars_to_rotate = []
     character_collector(index, chars_to_rotate)
   end
 
-  def d_index_finder
-    index = 3
+  def d_index_finder(index)
     chars_to_rotate = []
     character_collector(index, chars_to_rotate)
   end
@@ -86,28 +82,28 @@ class Decryptor
   end
 
   def neg_a_rotator
-    character_map_indexes(a_index_finder).map do |index|
+    character_map_indexes(a_index_finder(0)).map do |index|
       rotated = character_map.rotate((offset_a * -1))
       rotated[index]
     end
   end
 
   def neg_b_rotator
-    character_map_indexes(b_index_finder).map do |index|
+    character_map_indexes(b_index_finder(1)).map do |index|
       rotated = character_map.rotate((offset_b * -1))
       rotated[index]
     end
   end
 
   def neg_c_rotator
-    character_map_indexes(c_index_finder).map do |index|
+    character_map_indexes(c_index_finder(2)).map do |index|
       rotated = character_map.rotate((offset_c * -1))
       rotated[index]
     end
   end
 
   def neg_d_rotator
-    character_map_indexes(d_index_finder).map do |index|
+    character_map_indexes(d_index_finder(3)).map do |index|
       rotated = character_map.rotate((offset_d * -1))
       rotated[index]
     end
