@@ -8,11 +8,11 @@ class Decryptor
   def initialize(message, key, date)
     @message = message
     @key = key.to_s
-    @date = date
+    @date = date.to_s
   end
 
   def date_formatter
-    Date.parse(date.to_s)
+    Date.parse(date)
   end
 
   def offset_calculator
