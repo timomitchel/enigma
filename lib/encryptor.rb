@@ -8,7 +8,7 @@ class Encryptor
 
   def initialize(message)
     @message = message.to_s.chomp
-    @offset = OffsetCalculator.new
+    @offset =  OffsetCalculator.new.a_to_d_assignment
   end
 
   def character_map
@@ -58,19 +58,19 @@ class Encryptor
   end
 
   def offset_a
-    offset.a_to_d_assignment["A"]
+    offset["A"]
   end
 
   def offset_b
-    offset.a_to_d_assignment["B"]
+    offset["B"]
   end
 
   def offset_c
-    offset.a_to_d_assignment["C"]
+    offset["C"]
   end
 
   def offset_d
-    offset.a_to_d_assignment["D"]
+    offset["D"]
   end
 
   def a_rotator

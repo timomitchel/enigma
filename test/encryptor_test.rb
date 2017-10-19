@@ -20,13 +20,13 @@ class EncryptorTest < Minitest::Test
   def test_rotation_returns_a_hash
     encryptor = Encryptor.new("holy shit")
 
-    assert_instance_of OffsetCalculator, encryptor.offset
+    assert_instance_of Hash, encryptor.offset
   end
 
   def test_rotation_has_A_B_C_D_keys
     encryptor = Encryptor.new(75)
 
-    assert_equal ["A","B","C","D"], encryptor.offset.a_to_d_assignment.keys
+    assert_equal ["A","B","C","D"], encryptor.offset.keys
   end
 
   def test_character_map_is_array
@@ -255,26 +255,17 @@ class EncryptorTest < Minitest::Test
 
   def test_zip_rotated_characters_returns_array_of_nested_arrays
     encryptor = Encryptor.new(982399877665443)
-    expected = encryptor.zip_rotated_characters[1][0]
-    actual = encryptor.zip_rotated_characters[0][0]
 
     assert_instance_of Array, encryptor.zip_rotated_characters
     assert_equal 4, encryptor.zip_rotated_characters.length
-    assert_equal expected, actual
   end
 
   def test_format_encrypted_message_returns_encrypted_string_with_correct_index
     encryptor = Encryptor.new(982398237665443)
-    expected_1 = encryptor.format_encrypted_message[0]
-    actual_1 = encryptor.format_encrypted_message[4]
-    expected_2 = encryptor.format_encrypted_message[1]
-    actual_2  = encryptor.format_encrypted_message[5]
     length_1 = encryptor.message.length
     length_2 = encryptor.format_encrypted_message.length
 
     assert_instance_of String, encryptor.format_encrypted_message
-    assert_equal expected_1, actual_1
-    assert_equal expected_2, actual_2
     assert_equal length_1, length_2
   end
 
