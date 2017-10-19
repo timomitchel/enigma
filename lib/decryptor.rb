@@ -1,15 +1,17 @@
 require_relative 'character_map'
 require_relative "offset_calculator"
 require "date"
+require "pry"
 
 class Decryptor
 
-  attr_reader :message, :key, :date
+  attr_reader :message, :key, :date, :offset
 
   def initialize(message, key, date)
     @message = message.to_s
     @key = key.to_s
     @date = date.to_s
+    @offset = OffsetCalculator.new(date_formatter, key)
   end
 
   def date_formatter
@@ -17,7 +19,7 @@ class Decryptor
   end
 
   def offset_caller
-    OffsetCalculator.new(date_formatter, key).a_to_d_assignment
+    offset.a_to_d_assignment
   end
 
   def character_map

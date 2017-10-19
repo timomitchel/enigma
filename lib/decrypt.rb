@@ -1,4 +1,5 @@
 require_relative 'decryptor'
+
 class Decrypt
 
   def initialize

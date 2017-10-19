@@ -4,11 +4,12 @@ require "pry"
 
 class Encryptor
 
-  attr_reader :message, :offset
+  attr_reader :message, :offset, :offset_instance
 
   def initialize(message)
     @message = message.to_s.chomp
-    @offset =  OffsetCalculator.new.a_to_d_assignment
+    @offset_instance =   OffsetCalculator.new
+    @offset = offset_instance.a_to_d_assignment
   end
 
   def character_map
