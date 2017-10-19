@@ -118,6 +118,3 @@ class Decryptor
     zip_rotated_characters.compact.join
   end
 end
-
-d = Decryptor.new('du0idn8ea7t7pxxp6y77pxt7iu7p9wt7sum numik4zfjwmqknsb.7amp', '31466', 171017)
-p d.format_decrypted_message

@@ -1,5 +1,4 @@
 require_relative "encryptor"
-require "pry"
 require 'yymmdd'
 
 class Encrypt
@@ -13,7 +12,7 @@ class Encrypt
     encrypted_message = encryptor_class.format_encrypted_message
     encrypted_writer.write(encrypted_message)
     date_formatter = ddmmyy(encryptor_class.offset.current_date)
-    puts "Created #{ARGV[1]} with the key #{encryptor_class.offset.current_key} and date #{date_formatter}"  
+    puts "Created #{ARGV[1]} with the key #{encryptor_class.offset.current_key} and date #{date_formatter}"
   end
 end
 
