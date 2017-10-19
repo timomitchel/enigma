@@ -3,7 +3,6 @@ require_relative 'decryptor'
 class Decrypt
 
   def initialize
-    encrypted_message
     formatted = decryptor(encrypted_message).format_decrypted_message
     decrypted_writer.write(formatted)
     puts "Created #{ARGV[1]} with the key #{ARGV[2]} and date #{ARGV[3]}"

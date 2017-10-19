@@ -20,7 +20,7 @@ class OffsetCalculator
   end
 
   def date_to_string
-   ddmmyy(@current_date)
+   yymmdd(@current_date)
   end
 
   def date_squared
