@@ -1,6 +1,7 @@
 require "minitest/autorun"
 require "minitest/pride"
 require "./lib/encryptor"
+require_relative "test_helper"
 
 class EncryptorTest < Minitest::Test
 
@@ -19,13 +20,13 @@ class EncryptorTest < Minitest::Test
   def test_rotation_returns_a_hash
     encryptor = Encryptor.new("holy shit")
 
-    assert_instance_of Hash, encryptor.rotation
+    assert_instance_of Hash, encryptor.offset
   end
 
   def test_rotation_has_A_B_C_D_keys
     encryptor = Encryptor.new(75)
 
-    assert_equal ["A","B","C","D"], encryptor.rotation.keys
+    assert_equal ["A","B","C","D"], encryptor.offset.keys
   end
 
   def test_character_map_is_array
@@ -140,9 +141,132 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_character_collector_returns_array
-    encryptor = Encryptor.new("some string")
+    encryptor = Encryptor.new("alsbguibadgiuab vobW08W3E8")
 
     assert_instance_of Array, encryptor.character_collector(0,[])
+  end
+
+  def test_character_map_indexes_returns_array
+    encryptor = Encryptor.new("some string")
+    actual = encryptor.character_map_indexes(encryptor.a_index_finder)
+    assert_instance_of Array, actual
+  end
+
+  def test_character_map_index_a_returns_integers_at_index_position_on_char_map
+    encryptor = Encryptor.new("some string")
+    actual = encryptor.character_map_indexes(encryptor.a_index_finder)
+    expected_1 = encryptor.character_map.index('s')
+    expected_2 = encryptor.character_map.index(' ')
+    expected_3 = encryptor.character_map.index('i')
+
+    assert_equal expected_1, actual[0]
+    assert_equal expected_2, actual[1]
+    assert_equal expected_3, actual[2]
+  end
+
+  def test_character_map_index_b_returns_integers_at_index_position_on_char_map
+    encryptor = Encryptor.new("some string")
+    actual = encryptor.character_map_indexes(encryptor.b_index_finder)
+    expected_1 = encryptor.character_map.index('o')
+    expected_2 = encryptor.character_map.index('s')
+    expected_3 = encryptor.character_map.index('n')
+
+    assert_equal expected_1, actual[0]
+    assert_equal expected_2, actual[1]
+    assert_equal expected_3, actual[2]
+  end
+
+  def test_character_map_index_c_returns_integers_at_index_position_on_char_map
+    encryptor = Encryptor.new("some string")
+    actual = encryptor.character_map_indexes(encryptor.c_index_finder)
+    expected_1 = encryptor.character_map.index('m')
+    expected_2 = encryptor.character_map.index('t')
+    expected_3 = encryptor.character_map.index('g')
+
+    assert_equal expected_1, actual[0]
+    assert_equal expected_2, actual[1]
+    assert_equal expected_3, actual[2]
+  end
+
+  def test_character_map_index_d_returns_integers_at_index_position_on_char_map
+    encryptor = Encryptor.new("some string")
+    actual = encryptor.character_map_indexes(encryptor.d_index_finder)
+    expected_1 = encryptor.character_map.index('e')
+    expected_2 = encryptor.character_map.index('r')
+
+    assert_equal expected_1, actual[0]
+    assert_equal expected_2, actual[1]
+    assert_nil nil, actual[2]
+  end
+
+  def test_offset_a_returns_an_integer
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Integer, encryptor.offset_a
+  end
+
+  def test_offset_b_returns_an_integer
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Integer, encryptor.offset_b
+  end
+
+  def test_offset_c_returns_an_integer
+    encryptor = Encryptor.new(230508385608242)
+
+    assert_instance_of Integer, encryptor.offset_c
+  end
+
+  def test_offset_d_returns_an_integer
+    encryptor = Encryptor.new({'some string' => 2})
+
+    assert_instance_of Integer, encryptor.offset_d
+  end
+
+  def test_a_rotator_returns_an_array
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Array, encryptor.a_rotator
+  end
+
+  def test_b_rotator_returns_an_array
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Array, encryptor.b_rotator
+  end
+
+  def test_c_rotator_returns_an_array
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Array, encryptor.c_rotator
+  end
+
+  def test_d_rotator_returns_an_array
+    encryptor = Encryptor.new("some string")
+
+    assert_instance_of Array, encryptor.d_rotator
+  end
+
+  def test_a_rotator_returns_same_rotation_for_a_with_unexpected_input
+    encryptor = Encryptor.new(982399877665443)
+
+    assert  encryptor.a_rotator[0], encryptor.a_rotator[1]
+  end
+
+  def test_zip_rotated_characters_returns_array_of_nested_arrays
+    encryptor = Encryptor.new(982399877665443)
+
+    assert_instance_of Array, encryptor.zip_rotated_characters
+    assert_equal 4, encryptor.zip_rotated_characters.length
+  end
+
+  def test_format_encrypted_message_returns_encrypted_string_with_correct_index
+    encryptor = Encryptor.new(982398237665443)
+    length_1 = encryptor.message.length
+    length_2 = encryptor.format_encrypted_message.length
+
+    assert_instance_of String, encryptor.format_encrypted_message
+    assert_equal length_1, length_2
   end
 
 end
