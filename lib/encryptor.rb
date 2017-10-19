@@ -1,14 +1,18 @@
 require_relative 'offset_calculator'
 require_relative 'character_map'
+require_relative 'key_generator'
+require "date"
 
 class Encryptor
 
-  attr_reader :message, :offset, :offset_instance
+  attr_reader :message, :offset, :key, :date, :offset_calculator
 
-  def initialize(message)
+  def initialize(message, key = KeyGenerator.new.key, date = Date.today)
     @message = message.to_s.chomp
-    @offset_instance =   OffsetCalculator.new
-    @offset = offset_instance.a_to_d_assignment
+    @key = key
+    @date = date
+    @offset_calculator = OffsetCalculator.new(@date, @key)
+    @offset = offset_calculator.a_to_d_assignment
   end
 
   def character_map
@@ -18,6 +22,7 @@ class Encryptor
   def message_splitter
     @message.downcase.chars
   end
+
 
   def a_index_finder
     index = 0
