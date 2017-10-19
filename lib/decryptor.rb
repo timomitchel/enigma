@@ -1,12 +1,13 @@
 require_relative 'character_map'
 require_relative "offset_calculator"
+require "date"
 
 class Decryptor
 
   attr_reader :message, :key, :date
 
   def initialize(message, key, date)
-    @message = message
+    @message = message.to_s
     @key = key.to_s
     @date = date.to_s
   end
