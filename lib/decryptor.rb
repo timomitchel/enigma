@@ -4,17 +4,20 @@ require "date"
 
 class Decryptor
 
-  attr_reader :message, :key, :date, :offset_caller
+  attr_reader :message, :key, :date
 
   def initialize(message, key, date)
     @message = message.to_s
     @key = key.to_s
     @date = date.to_s
-    @offset_caller = OffsetCalculator.new(key, date).a_to_d_assignment
   end
 
   def date_formatter
     Date.parse(date)
+  end
+
+  def offset_caller
+    OffsetCalculator.new(date_formatter, key).a_to_d_assignment
   end
 
   def character_map

@@ -14,20 +14,6 @@ class DecryptorTest < Minitest::Test
     assert_equal '171017', decrypt.date
   end
 
-  # def test_date_formatter_returns_date_object
-  #   decrypt = Decryptor.new('helllo', 24238, '171088')
-  #
-  #   assert_equal '', decrypt.date_formatter
-  # end
-
-  def test_offset_calculator_holds_offset_object_with_date_and_key
-    decrypt = Decryptor.new('hi', '24238', 071017)
-
-    assert_instance_of OffsetCalculator, decrypt.offset_calculator
-    assert_instance_of Date, decrypt.offset_calculator.current_date
-    assert_equal '24238', decrypt.offset_calculator.current_key
-  end
-
   def test_offset_caller_returns_hash_with_offsets
     decrypt = Decryptor.new('hi', '24238', 071017)
 
